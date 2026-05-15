@@ -20,6 +20,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.List;
 
 /**
+ * Data Transfer Object representing detailed information about an owner,
+ * including their associated pets.
+ *
  * @author Maciej Szarlinski
  */
 public record OwnerDetails(
@@ -31,6 +34,11 @@ public record OwnerDetails(
     String telephone,
     List<PetDetails> pets) {
 
+    /**
+     * Returns a list of pet IDs associated with this owner.
+     *
+     * @return list of pet IDs
+     */
     @JsonIgnore
     public List<Integer> getPetIds() {
         return pets.stream()
@@ -39,57 +47,126 @@ public record OwnerDetails(
     }
 
 
+    /**
+     * Builder for constructing {@link OwnerDetails} instances.
+     */
     public static final class OwnerDetailsBuilder {
+
+        /** The owner's unique identifier. */
         private int id;
+
+        /** The owner's first name. */
         private String firstName;
+
+        /** The owner's last name. */
         private String lastName;
+
+        /** The owner's street address. */
         private String address;
+
+        /** The owner's city. */
         private String city;
+
+        /** The owner's telephone number. */
         private String telephone;
+
+        /** The list of pets associated with the owner. */
         private List<PetDetails> pets;
 
         private OwnerDetailsBuilder() {
         }
 
+        /**
+         * Creates a new {@link OwnerDetailsBuilder} instance.
+         *
+         * @return a new builder instance
+         */
         public static OwnerDetailsBuilder anOwnerDetails() {
             return new OwnerDetailsBuilder();
         }
 
-        public OwnerDetailsBuilder id(int id) {
-            this.id = id;
+        /**
+         * Sets the owner's unique identifier.
+         *
+         * @param newId the owner ID to set
+         * @return this builder
+         */
+        public OwnerDetailsBuilder id(int newId) {
+            this.id = newId;
             return this;
         }
 
-        public OwnerDetailsBuilder firstName(String firstName) {
-            this.firstName = firstName;
+        /**
+         * Sets the owner's first name.
+         *
+         * @param newFirstName the first name to set
+         * @return this builder
+         */
+        public OwnerDetailsBuilder firstName(String newFirstName) {
+            this.firstName = newFirstName;
             return this;
         }
 
-        public OwnerDetailsBuilder lastName(String lastName) {
-            this.lastName = lastName;
+        /**
+         * Sets the owner's last name.
+         *
+         * @param newLastName the last name to set
+         * @return this builder
+         */
+        public OwnerDetailsBuilder lastName(String newLastName) {
+            this.lastName = newLastName;
             return this;
         }
 
-        public OwnerDetailsBuilder address(String address) {
-            this.address = address;
+        /**
+         * Sets the owner's street address.
+         *
+         * @param newAddress the address to set
+         * @return this builder
+         */
+        public OwnerDetailsBuilder address(String newAddress) {
+            this.address = newAddress;
             return this;
         }
 
-        public OwnerDetailsBuilder city(String city) {
-            this.city = city;
+        /**
+         * Sets the owner's city.
+         *
+         * @param newCity the city to set
+         * @return this builder
+         */
+        public OwnerDetailsBuilder city(String newCity) {
+            this.city = newCity;
             return this;
         }
 
-        public OwnerDetailsBuilder telephone(String telephone) {
-            this.telephone = telephone;
+        /**
+         * Sets the owner's telephone number.
+         *
+         * @param newTelephone the telephone number to set
+         * @return this builder
+         */
+        public OwnerDetailsBuilder telephone(String newTelephone) {
+            this.telephone = newTelephone;
             return this;
         }
 
-        public OwnerDetailsBuilder pets(List<PetDetails> pets) {
-            this.pets = pets;
+        /**
+         * Sets the list of pets associated with the owner.
+         *
+         * @param newPets the list of pets to set
+         * @return this builder
+         */
+        public OwnerDetailsBuilder pets(List<PetDetails> newPets) {
+            this.pets = newPets;
             return this;
         }
 
+        /**
+         * Builds and returns a new {@link OwnerDetails} instance.
+         *
+         * @return the constructed {@link OwnerDetails}
+         */
         public OwnerDetails build() {
             return new OwnerDetails(id, firstName, lastName, address, city, telephone, pets);
         }
