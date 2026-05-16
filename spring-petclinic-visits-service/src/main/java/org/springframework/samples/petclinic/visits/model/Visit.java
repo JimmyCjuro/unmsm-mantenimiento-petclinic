@@ -30,7 +30,7 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "visits")
-public class Visit {
+public final class Visit {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -64,20 +64,20 @@ public class Visit {
         return this.petId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setId(Integer newId) {
+        this.id = newId;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setDate(Date newDate) {
+        this.date = newDate;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setDescription(String newDescription) {
+        this.description = newDescription;
     }
 
-    public void setPetId(int petId) {
-        this.petId = petId;
+    public void setPetId(int newPetId) {
+        this.petId = newPetId;
     }
 
 
@@ -94,23 +94,23 @@ public class Visit {
             return new VisitBuilder();
         }
 
-        public VisitBuilder id(Integer id) {
-            this.id = id;
+        public VisitBuilder id(Integer newId) {
+            this.id = newId;
             return this;
         }
 
-        public VisitBuilder date(Date date) {
-            this.date = date;
+        public VisitBuilder date(Date newDate) {
+            this.date = newDate;
             return this;
         }
 
-        public VisitBuilder description(String description) {
-            this.description = description;
+        public VisitBuilder description(String newDescription) {
+            this.description = newDescription;
             return this;
         }
 
-        public VisitBuilder petId(int petId) {
-            this.petId = petId;
+        public VisitBuilder petId(int newPetId) {
+            this.petId = newPetId;
             return this;
         }
 
