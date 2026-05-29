@@ -5,9 +5,9 @@ name: Java CI with Maven
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, develop, 'feature/*' ]
   pull_request:
-    branches: [ main ]
+    branches: [ main, develop ]
 
 jobs:
   build:
@@ -23,7 +23,9 @@ jobs:
       uses: actions/setup-java@v4
       with:
         java-version: ${{matrix.java}}
-        distribution: 'adopt'
+        distribution: 'temurin'
         cache: maven
-    - name: Build with Maven
-      run: mvn -B package --file pom.xml
+    - name: Build and Test with Maven Wrapper
+      run: |
+        chmod +x mvnw
+        ./mvnw -B clean verify --file pom.xml
