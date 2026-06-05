@@ -21,6 +21,9 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
+      - name: Make mvnw executable
+        run: chmod +x ./mvnw
+        
       - name: Run Checkstyle - customers-service
         run: ./mvnw checkstyle:checkstyle -pl spring-petclinic-customers-service -am --no-transfer-progress
         continue-on-error: true
