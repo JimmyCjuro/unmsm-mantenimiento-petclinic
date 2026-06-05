@@ -23,7 +23,7 @@ jobs:
 
       - name: Make mvnw executable
         run: chmod +x ./mvnw
-        
+
       - name: Run Checkstyle - customers-service
         run: ./mvnw checkstyle:checkstyle -pl spring-petclinic-customers-service -am --no-transfer-progress
         continue-on-error: true
@@ -45,7 +45,7 @@ jobs:
         with:
           name: checkstyle-reports
           path: |
-            spring-petclinic-customers-service/target/site/checkstyle.html
-            spring-petclinic-visits-service/target/site/checkstyle.html
-            spring-petclinic-vets-service/target/site/checkstyle.html
-            spring-petclinic-api-gateway/target/site/checkstyle.html
+            spring-petclinic-customers-service/target/reports/checkstyle.html
+            spring-petclinic-visits-service/target/reports/checkstyle.html
+            spring-petclinic-vets-service/target/reports/checkstyle.html
+            spring-petclinic-api-gateway/target/reports/checkstyle.html
